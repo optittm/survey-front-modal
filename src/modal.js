@@ -3,11 +3,21 @@ import Network from 'ottm-connector-feedback'
 import { translate } from '../i18n/i18n'
 import '../css/style.css'
 import 'regenerator-runtime/runtime'
+import { config } from '../config'
 
-const API_URL = document.getElementById("ottmModal").getAttribute('data-api-url');
+function getApiUrl(){
+  if(config.API_URL !== null){
+    return config.API_URL;
+  }
+  if(process.env.API != null){
+    return process.env.API
+  }
+  return document.getElementById("ottmModal").getAttribute('data-api-url');
+}
+
 
 async function launch(featureUrl) {
-  const network = new Network(featureUrl, API_URL)
+  const network = new Network(featureUrl, getApiUrl())
   network.initConfig().then(
     async data => {
       const Toast = Swal.mixin({
@@ -31,6 +41,7 @@ async function launch(featureUrl) {
       }
     })
 }
+
 
 async function display() {
   const { value: formValues } = await Swal.fire({

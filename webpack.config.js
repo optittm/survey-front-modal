@@ -1,8 +1,14 @@
 const path = require('path')
+const { EnvironmentPlugin } = require('webpack')
 
 var config = {
     entry: ['regenerator-runtime/runtime.js', './src/index.js'],
     devtool: 'inline-source-map',
+    plugins: [
+        new EnvironmentPlugin({
+            API: 'https://localhost:8080',
+        }),
+    ], 
     module: {
         rules: [
             {

@@ -1,6 +1,12 @@
 {
   "name": "ottm-modal-feedback",
   "version": "1.0.10",
+  "eslintConfig": {
+    "env": {
+        "browser": true,
+        "node": true
+    }
+  },
   "description": "library used to display a modal when it's necessary to get user's feedback from a specific feature",
   "main": "./dist/bundle.js",
   "scripts": {

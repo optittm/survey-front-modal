@@ -12,15 +12,56 @@ npm install ottm-modal-feedback
 
 # Usage 
 
-Initialize the plugin by referencing the necessary files:
+You can initialize the dependancy through importing the bundle.js from the npm dependancy :
+2. In Pure JS :
+
+Modify your `index.html` to add at the end of `body` tag :
 ```
-    <script id="ottmModal" data-api-url="http://localhost:8080" type="text/javascript" src="./dist/bundle.js" ></script>
+    <script id="ottmModal" data-api-url="http://localhost:8080" type="text/javascript"
+        src="./node_modules/ottm-modal-feedback/dist/bundle.js"></script>
     <script>
-        window.ModalOttm.launch(projectId, urlFeature);
+        window.ModalOttm.launch(urlFeature);
     </script>
 ```
 
-where projectId is the dd given on the OTTM admin panel when you configured your rules for the modal, and urlFeature is the url of the functionnality (web page where the script will be inserted ) you want to monitore.
+2. In Angular :
+
+Add to your `src/index.html` :
+```
+    <script id="ottmModal" data-api-url="http://localhost:8080" type="text/javascript"
+        src="ottm-modal-feedback.js"></script>
+    <script>
+        window.ModalOttm.launch(urlFeature);
+    </script>
+```
+And add to the `angular.json` in the `scripts` element :
+```
+"scripts": [
+    ...
+    {
+        "input": "node_modules/ottm-modal-feedback/dist/bundle.js",
+        "inject": false,
+        "bundleName": "ottm-modal-feedback"
+    }
+]
+```
+
+3. In other JS Framework like React :
+
+Add to your `index.html` :
+```
+<script id="ottmModal" data-api-url="http://localhost:8080" type="text/javascript"></script>
+```
+Add to your `src/index.js` | `script.js` :
+```
+import 'ottm-modal-feedback';
+...
+window.ModalOttm.launch(urlFeature);
+```
+
+***
+
+Where **urlFeature** is the url of the functionnality (web page where the script will be inserted ) you want to monitore.
 
 # Todos
 

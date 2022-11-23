@@ -16,11 +16,13 @@ Initialize the plugin by referencing the necessary files:
 ```
     <script id="ottmModal" data-api-url="http://localhost:8080" type="text/javascript" src="./dist/bundle.js" ></script>
     <script>
-        window.ModalOttm.launch(projectId, urlFeature);
+        window.ModalOttm.launch(urlFeature);
     </script>
 ```
 
-where projectId is the dd given on the OTTM admin panel when you configured your rules for the modal, and urlFeature is the url of the functionnality (web page where the script will be inserted ) you want to monitore.
+where urlFeature is the url of the functionnality (web page where the script will be inserted) you want to monitor.
+
+**See examples in the folder `examples` for Angular, React and JS.**
 
 # Todos
 

@@ -9,9 +9,6 @@ function getApiUrl(){
   if(config.API_URL !== null){
     return config.API_URL;
   }
-  if(process.env.API != null){
-    return process.env.API
-  }
   return document.getElementById("ottmModal").getAttribute('data-api-url');
 }
 
@@ -29,7 +26,7 @@ async function launch(featureUrl) {
       if (data === true) {
         const values = await display()
         if (values != null && values[0] != null) {
-          network.sendUserFeedback(values[0], values[1])
+          network.sendUserFeedback(parseInt(values[0]), values[1])
           Toast.fire({
             icon: 'success',
             title: '<div data-i18n="success"></div>',

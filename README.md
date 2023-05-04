@@ -30,4 +30,5 @@ The tool is released under a MIT licence. Contributors are welcomed.
 
 ## Todos
 
+- Remove the direct dependency on fingerprintjs once the library's npm package is updated
 - Give the possibility to the user to custom the modal with is own graphic chart. 

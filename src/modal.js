@@ -13,7 +13,7 @@ function getApiUrl(){
 }
 
 
-async function launch(featureUrl) {
+async function launch(featureUrl = window.location.href) {
   const network = new Network(featureUrl, getApiUrl())
   network.initConfig().then(
     async data => {

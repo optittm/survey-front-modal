@@ -18,8 +18,9 @@ export const translate = () => {
                                 "cancel": "Cancel"
                             },
                             "title": "User feedback",
-                            "comment": "What can we do to improve?",
-                            "success": "Feedback correctly get !"
+                            "comment": "What can we do to improve ?",
+                            "success": "Feedback successfully sent !",
+                            "error": "An error has occurred"
                         }
                     },
                     fr: {
@@ -29,8 +30,9 @@ export const translate = () => {
                                 "cancel": "Annuler"
                             },
                             "title": "Avis utilisateur",
-                            "comment": "Que pouvons-nous faire de mieux?",
-                            "success": "Avis utilisateur correctement envoyé!"
+                            "comment": "Que pouvons-nous faire de mieux ?",
+                            "success": "Avis utilisateur correctement envoyé !",
+                            "error": "Une erreur s'est produite"
                         }
                     }
                 }

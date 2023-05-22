@@ -8,7 +8,7 @@ export const translate = () => {
         i18next
             .use(LngDetector)
             .init({
-                debug: true,
+                debug: false,
                 fallbackLng: 'en',
                 resources: {
                     en: {

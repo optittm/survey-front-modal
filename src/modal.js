@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2'
-import Network from '../dist_lib/index.js'
+import Network from 'ottm-connector-feedback'
 import { translate } from '../i18n/i18n'
 import '../css/style.css'
 import 'regenerator-runtime/runtime'

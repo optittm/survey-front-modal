@@ -14,20 +14,25 @@ function getApiUrl(){
 
 
 async function launch(featureUrl = window.location.href) {
-  const network = new Network(featureUrl, getApiUrl())
+  const network = new Network(featureUrl, getApiUrl());
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
   network.initConfig().then(
     async data => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'bottom-end',
-        showConfirmButton: false,
-        timer: 3000
-      })
       if (data === true) {
         const values = await display()
         if (values != null && values[0] != null) {
-          const commentSent = await network.sendUserFeedback(parseInt(values[0]), values[1])
-          const notif = commentSent ? 'success' : 'false';
+          let notif = '';
+          try {
+            await network.sendUserFeedback(parseInt(values[0]), values[1]);
+            notif = 'success';
+          } catch (error) {
+            notif = 'error';
+          }
           Toast.fire({
             icon: notif,
             title: '<div data-i18n="' + notif + '"></div>',
@@ -37,7 +42,15 @@ async function launch(featureUrl = window.location.href) {
           })
         }
       }
-    })
+    }).catch(error => {
+      Toast.fire({
+        icon: 'error',
+        title: '<div data-i18n="error"></div>',
+        didOpen: () => {
+          translate()
+        }
+      })
+    });
 }
 
 

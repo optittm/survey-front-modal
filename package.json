@@ -1,13 +1,13 @@
 {
-  "name": "ottm-modal-feedback",
-  "version": "1.0.10",
+  "name": "@ottm/survey-front-modal",
+  "version": "1.1.0",
   "eslintConfig": {
     "env": {
       "browser": true,
       "node": true
     }
   },
-  "description": "library used to display a modal when it's necessary to get user's feedback from a specific feature",
+  "description": "Library used to display a modal when it's necessary to get user's feedback from a specific feature",
   "main": "./dist/bundle.js",
   "scripts": {
     "dev": "webpack --watch --mode=development",
@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://gitlab.sii.fr/user-feedback-componant/ottm-modal-feedback.git"
   },
-  "author": "Benjamin DARMET",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^3.4.1",
@@ -26,7 +26,7 @@
     "i18next-browser-languagedetector": "^6.1.3",
     "jquery": "^3.6.0",
     "jquery-i18next": "^1.2.1",
-    "ottm-connector-feedback": "^1.0.4",
+    "@ottm/survey-front-library": "^1.2.0",
     "regenerator-runtime": "^0.13.9",
     "style-loader": "^3.3.1",
     "sweetalert2": "^11.4.3"

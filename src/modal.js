@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2'
-import Network from 'ottm-connector-feedback'
+import Network from '@ottm/survey-front-library'
 import { translate } from '../i18n/i18n'
 import '../css/style.css'
 import 'regenerator-runtime/runtime'

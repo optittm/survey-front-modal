@@ -3,7 +3,7 @@
 Library used to get user feedback on a specific functionality of your own site.
 The feedback is given through a modal where the user is invited to give a rating and a comment on the functionality currently used.
 This is part of the OTTM Survey tool ([survey-back-api](https://github.com/optittm/survey-back-api) and [survey-front-library](https://github.com/optittm/survey-front-library)).\
-We have a specific documentation to install and test this project locally : `local_installation.md`.
+**We have a specific documentation to install and test this project locally : `local_installation.md`.**
 
 ## NPM installation for survey front modal
 

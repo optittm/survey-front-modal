@@ -6,7 +6,7 @@ var config = {
     devtool: 'inline-source-map',
     plugins: [
         new EnvironmentPlugin({
-            API: 'https://localhost:8080',
+            API: 'http://localhost:8080',
         }),
     ], 
     module: {

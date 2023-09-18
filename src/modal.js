@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2'
-import Network from 'ottm-connector-feedback'
+import Network from '@ottm/survey-front-library'
 import { translate } from '../i18n/i18n'
 import '../css/style.css'
 import 'regenerator-runtime/runtime'
@@ -9,43 +9,53 @@ function getApiUrl(){
   if(config.API_URL !== null){
     return config.API_URL;
   }
-  if(process.env.API != null){
-    return process.env.API
-  }
   return document.getElementById("ottmModal").getAttribute('data-api-url');
 }
 
 
-async function launch(featureUrl) {
-  const network = new Network(featureUrl, getApiUrl())
+async function launch(featureUrl = window.location.href) {
+  const network = new Network(featureUrl, getApiUrl());
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
   network.initConfig().then(
     async data => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'bottom-end',
-        showConfirmButton: false,
-        timer: 1500
-      })
       if (data === true) {
         const values = await display()
         if (values != null && values[0] != null) {
-          network.sendUserFeedback(values[0], values[1])
+          let notif = '';
+          try {
+            await network.sendUserFeedback(parseInt(values[0]), values[1]);
+            notif = 'success';
+          } catch (error) {
+            notif = 'error';
+          }
           Toast.fire({
-            icon: 'success',
-            title: '<div data-i18n="success"></div>',
+            icon: notif,
+            title: '<div data-i18n="' + notif + '"></div>',
             didOpen: () => {
               translate()
             }
           })
         }
       }
-    })
+    }).catch(error => {
+      Toast.fire({
+        icon: 'error',
+        title: '<div data-i18n="error"></div>',
+        didOpen: () => {
+          translate()
+        }
+      })
+    });
 }
 
 
 async function display() {
   const { value: formValues } = await Swal.fire({
-    position: 'bottom-end',
     title: '<div data-i18n="title"></div>',
     html:
       '<form id="rate" class="rating">' +
@@ -60,7 +70,7 @@ async function display() {
       '<input type="radio" id="star_1" name="rate" value="1" />' +
       '<label for="star_1" title="One">&#9733;</label>' +
       '</form>' +
-      '<textarea id="comment" data-i18n="comment" placeholder="What can we do to improve?" cols="50" rows="15">' +
+      '<textarea id="comment" data-i18n="[placeholder]comment" cols="50" rows="15">' +
       '</textarea>',
     focusConfirm: false,
     confirmButtonText:
